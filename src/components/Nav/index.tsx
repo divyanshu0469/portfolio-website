@@ -43,7 +43,7 @@ const NavItem = ({ item }: { item: { href: string; title: string } }) => {
       }`}
     >
       <motion.p
-        className={`px-1 ${pathname === item.href ? "text-dark-orange" : ""}`}
+        className={`px-1 ${pathname === item.href ? "text-light-orange" : ""}`}
       >
         {item.title}
       </motion.p>
