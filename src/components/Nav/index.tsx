@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { motion, useAnimationFrame } from "motion/react";
-import { ReactNode, useRef, useState } from "react";
+import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 const items = [
   { title: "Home", href: "/", subtitle: "I AM A SOFTWARE DEV" },
   { title: "About", href: "/about", subtitle: "AAAAAA" },
@@ -8,29 +8,55 @@ const items = [
   { title: "Contact", href: "/contact", subtitle: "CCCCCC" },
 ];
 
+const NavItem = ({ item }: { item: { href: string; title: string } }) => {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [directionEnd, setDirectionEnd] = useState(false);
+  const [hover, setHover] = useState<{
+    enter?: { x: number; y: number };
+    exit?: { x: number; y: number };
+  }>({ enter: undefined, exit: undefined });
+  useEffect(() => {
+    if (!ref.current) return;
+    const { left, width } = ref.current.getBoundingClientRect();
+    const divStart = left;
+    const divEnd = left + width;
+    const mid = (divEnd + divStart) / 2;
+    if (
+      (hover.enter?.x && hover.enter?.x > mid) ||
+      (hover.exit?.x && hover.exit?.x > mid)
+    ) {
+      setDirectionEnd(true);
+    } else {
+      setDirectionEnd(false);
+    }
+  }, [hover]);
+  return (
+    <Link
+      ref={ref}
+      onMouseEnter={(e) => setHover({ enter: { x: e.clientX, y: e.clientY } })}
+      onMouseLeave={(e) => setHover({ exit: { x: e.clientX, y: e.clientY } })}
+      href={item.href}
+      className={`relative flex flex-col justify-center h-fit w-fit ${
+        directionEnd ? "items-end" : ""
+      }`}
+    >
+      <motion.p className="px-1">{item.title}</motion.p>
+      <motion.div
+        animate={{
+          width: hover.enter?.x ? "100%" : 0,
+        }}
+        transition={{ duration: 0.2 }}
+        className="bottom-0.5 bg-light-black h-0.5 -translate-y-0.5"
+      />
+    </Link>
+  );
+};
+
 const Nav = () => {
-  const [isHovered, setIsHovered] = useState<number>();
   return (
     <nav className="absolute right-0 flex w-fit justify-end text-light-black font-bold pt-4 pr-4 bg-light-cream">
       {items.map((item, index) => (
-        <Link
-          key={`nav-item-${index}`}
-          onMouseEnter={() => setIsHovered(index)}
-          onMouseLeave={() => setIsHovered(undefined)}
-          href={item.href}
-          className={`relative flex flex-col justify-center h-fit w-fit ${
-            isHovered === index ? "items-start" : "items-end"
-          }`}
-        >
-          <motion.p className="px-1">{item.title}</motion.p>
-          <motion.div
-            animate={{
-              width: isHovered === index ? "100%" : 0,
-            }}
-            style={{ transition: "transform .5s cubic-bezier(1,0,0,1)" }}
-            className="bottom-0.5 bg-light-black h-0.5 -translate-y-0.5"
-          />
-        </Link>
+        <NavItem key={index} item={item} />
       ))}
     </nav>
   );
