@@ -1,19 +1,37 @@
-:root {
-  --background: #ffffeb;
-  --foreground: #c4752f;
-  --color-orange: #c4752f;
-  --color-green: #61b34b;
-  --color-dark: #2a2a2a;
-}
-
+@import "tailwindcss";
 @font-face {
   font-family: "Redhawk";
   src: url("fonts/Redhawk.otf") format("opentype");
 }
-
+@font-face {
+  font-family: "Shinko";
+  src: url("fonts/ShinkosansRegular-8OO50.otf") format("opentype");
+}
 @font-face {
   font-family: "Riposte";
   src: url("fonts/RiposteLight.ttf") format("truetype");
+}
+
+:root {
+  --light-cream: #ffffeb;
+  --dark-orange: #c4752f;
+  --light-orange: #e3781b;
+  --light-green: #61b34b;
+  --light-black: #2a2a2a;
+  --font-redhawk: "Redhawk";
+  --font-riposte: "Riposte";
+  --font-shinko: "Shinko";
+}
+
+@theme inline {
+  --color-light-cream: var(--light-cream);
+  --color-dark-orange: var(--dark-orange);
+  --color-light-orange: var(--light-orange);
+  --color-light-green: var(--light-green);
+  --color-light-black: var(--light-black);
+  --font-redhawk: var(--font-redhawk);
+  --font-riposte: var(--font-riposte);
+  --font-shinko: var(--font-shinko);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,17 +49,15 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: "Riposte", sans-serif;
+  color: var(--light-orange);
+  background: var(--light-cream);
+  font-family: "Riposte";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+.page {
+  height: 100vh;
 }
 
 a {
