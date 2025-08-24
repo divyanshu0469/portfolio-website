@@ -4,6 +4,10 @@
   src: url("fonts/Redhawk.otf") format("opentype");
 }
 @font-face {
+  font-family: "Tarragon";
+  src: url("fonts/Tarragon.otf") format("opentype");
+}
+@font-face {
   font-family: "Shinko";
   src: url("fonts/ShinkosansRegular-8OO50.otf") format("opentype");
 }
@@ -21,6 +25,7 @@
   --font-redhawk: "Redhawk";
   --font-riposte: "Riposte";
   --font-shinko: "Shinko";
+  --font-tarragon: "Tarragon";
 }
 
 @theme inline {
@@ -32,6 +37,7 @@
   --font-redhawk: var(--font-redhawk);
   --font-riposte: var(--font-riposte);
   --font-shinko: var(--font-shinko);
+  --font-tarragon: var(--font-tarragon);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,8 +55,8 @@ body {
 }
 
 body {
-  color: var(--light-orange);
-  background: var(--light-cream);
+  color: var(--light-cream);
+  background: var(--light-black);
   font-family: "Riposte";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

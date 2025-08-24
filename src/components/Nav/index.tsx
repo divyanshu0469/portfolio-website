@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 const items = [
   { title: "Home", href: "/", subtitle: "I AM A SOFTWARE DEV" },
   { title: "About", href: "/about", subtitle: "AAAAAA" },
@@ -9,6 +10,7 @@ const items = [
 ];
 
 const NavItem = ({ item }: { item: { href: string; title: string } }) => {
+  const pathname = usePathname();
   const ref = useRef<HTMLAnchorElement>(null);
   const [directionEnd, setDirectionEnd] = useState(false);
   const [hover, setHover] = useState<{
@@ -40,13 +42,17 @@ const NavItem = ({ item }: { item: { href: string; title: string } }) => {
         directionEnd ? "items-end" : ""
       }`}
     >
-      <motion.p className="px-1">{item.title}</motion.p>
+      <motion.p
+        className={`px-1 ${pathname === item.href ? "text-dark-orange" : ""}`}
+      >
+        {item.title}
+      </motion.p>
       <motion.div
         animate={{
           width: hover.enter?.x ? "100%" : 0,
         }}
         transition={{ duration: 0.2 }}
-        className="bottom-0.5 bg-light-black h-0.5 -translate-y-0.5"
+        className="bottom-0.5 bg-light-orange h-0.5 -translate-y-0.5"
       />
     </Link>
   );
@@ -54,7 +60,7 @@ const NavItem = ({ item }: { item: { href: string; title: string } }) => {
 
 const Nav = () => {
   return (
-    <nav className="absolute right-0 flex w-fit justify-end text-light-black font-bold pt-4 pr-4 bg-light-cream">
+    <nav className="absolute right-0 flex w-fit justify-end text-light-cream font-bold pt-4 pr-4 bg-light-black">
       {items.map((item, index) => (
         <NavItem key={index} item={item} />
       ))}
