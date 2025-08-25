@@ -2,11 +2,10 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useMediaQuery } from "react-responsive";
 const items = [
-  { title: "Home", href: "/", subtitle: "I AM A SOFTWARE DEV" },
-  { title: "About", href: "/about", subtitle: "AAAAAA" },
-  { title: "Work", href: "/work", subtitle: "WWWWWW" },
-  { title: "Contact", href: "/contact", subtitle: "CCCCCC" },
+  { title: "About", href: "/" },
+  { title: "Contact", href: "/contact" },
 ];
 
 const NavItem = ({ item }: { item: { href: string; title: string } }) => {
@@ -59,11 +58,19 @@ const NavItem = ({ item }: { item: { href: string; title: string } }) => {
 };
 
 const Nav = () => {
+  const isMobile = useMediaQuery({ maxWidth: 637 });
+  const fontSize = isMobile ? "0.9rem" : "1rem";
   return (
-    <nav className="absolute right-0 flex w-fit justify-end text-light-cream font-bold pt-4 pr-4 bg-light-black">
-      {items.map((item, index) => (
-        <NavItem key={index} item={item} />
-      ))}
+    <nav
+      style={{ fontSize }}
+      className="z-1 fixed uppercase px-4 pt-4 flex w-full justify-between text-light-cream font-bold"
+    >
+      <p>Divyanshu Yadav</p>
+      <div className="flex">
+        {items.map((item, index) => (
+          <NavItem key={index} item={item} />
+        ))}
+      </div>
     </nav>
   );
 };

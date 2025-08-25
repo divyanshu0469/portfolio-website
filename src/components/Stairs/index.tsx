@@ -29,8 +29,8 @@ export const Stairs = ({ children }: { children: ReactNode }) => {
           return (
             <motion.div
               key={i}
-              {...anim(expand, i)}
-              className="relative w-full h-full bg-black"
+              {...anim(expand, nbOfColumns - i)}
+              className="relative w-full h-full bg-light-cream"
             />
           );
         })}
