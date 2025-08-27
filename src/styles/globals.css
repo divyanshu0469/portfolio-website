@@ -4,8 +4,16 @@
   src: url("fonts/Redhawk.otf") format("opentype");
 }
 @font-face {
-  font-family: "Tarragon";
-  src: url("fonts/Tarragon.otf") format("opentype");
+  font-family: "Deposta";
+  src: url("fonts/Deposta.otf") format("opentype");
+}
+@font-face {
+  font-family: "LT";
+  src: url("fonts/LT.SerifDemo.otf") format("opentype");
+}
+@font-face {
+  font-family: "Ralgine";
+  src: url("fonts/Ralgine-9MMJ2.otf") format("opentype");
 }
 @font-face {
   font-family: "Shinko";
@@ -25,7 +33,9 @@
   --font-redhawk: "Redhawk";
   --font-riposte: "Riposte";
   --font-shinko: "Shinko";
-  --font-tarragon: "Tarragon";
+  --font-deposta: "Deposta";
+  --font-lt: "LT";
+  --font-ralgine: "Ralgine";
 }
 
 @theme inline {
@@ -37,7 +47,9 @@
   --font-redhawk: var(--font-redhawk);
   --font-riposte: var(--font-riposte);
   --font-shinko: var(--font-shinko);
-  --font-tarragon: var(--font-tarragon);
+  --font-deposta: var(--font-deposta);
+  --font-lt: var(--font-lt);
+  --font-ralgine: var(--font-ralgine);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,10 +72,6 @@ body {
   font-family: "Riposte";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.page {
-  height: 100vh;
 }
 
 a {

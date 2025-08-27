@@ -95,7 +95,7 @@ export default function Contact() {
   const fontSize = isMobile ? (heightOver ? "5vh" : "8vw") : "4vw";
   return (
     <Stairs>
-      <div className="w-full h-full whitespace-nowrap  flex flex-col justify-center items-center pt-13 font-redhawk font-extrabold">
+      <div className="w-full h-screen whitespace-nowrap  flex flex-col justify-center items-center pt-13 font-redhawk font-extrabold">
         <MaskDiv
           heading={<h1 style={{ fontSize }}>GITHUB</h1>}
           marqueeHeading={
@@ -128,7 +128,7 @@ export default function Contact() {
         />
 
         <MaskDiv
-          heading={<h1 style={{ fontSize }}>X</h1>}
+          heading={<h1 style={{ fontSize }}>X / TWITTER</h1>}
           marqueeHeading={
             <div
               style={{ fontSize }}
