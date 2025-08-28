@@ -1,6 +1,7 @@
 "use client";
 import { Stairs } from "@/components/Stairs";
 import { StarFourIcon } from "@phosphor-icons/react";
+import Lenis from "@studio-freight/lenis";
 import { motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -86,6 +87,45 @@ const Heading = () => {
   );
 };
 
+const RepeatedImages = ({
+  images,
+  repeat = 1,
+  className,
+}: {
+  images: string[];
+  repeat?: number;
+  className?: string;
+}) => {
+  return Array(repeat)
+    .fill(0)
+    .map((_, idx) => (
+      <div key={idx} className="flex flex-col gap-4">
+        {images.map((src, index) => (
+          <Image
+            width={2268}
+            height={4032}
+            src={src}
+            key={index}
+            alt="parallax-image"
+            className={className}
+          />
+        ))}
+      </div>
+    ));
+};
+
+const images = [
+  "/2.jpg",
+  "/3.jpg",
+  "/4.jpg",
+  "/5.jpg",
+  "/6.jpg",
+  "/7.jpg",
+  "/8.jpg",
+  "/9.jpg",
+  "/10.jpg",
+];
+
 const ImageParallax = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
@@ -94,40 +134,43 @@ const ImageParallax = () => {
     offset: ["start end", "end start"],
   });
   const { height } = dimension;
-  const y = useTransform(scrollYProgress, [0, 1], [-2.5, height * 2]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [-2.5, height * -1]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [-2.5, height * 1.25]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, height * 1.75]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * -0.89]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 0.89]);
   useEffect(() => {
+    const lenis = new Lenis();
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
     const resize = () => {
       setDimension({ width: window.innerWidth, height: window.innerHeight });
     };
     window.addEventListener("resize", resize);
+    requestAnimationFrame(raf);
     resize();
     return () => {
       window.removeEventListener("resize", resize);
     };
   }, []);
   return (
-    <motion.div
-      ref={ref}
-      className="overflow-hidden w-full h-full relative grid grid-cols-3 gap-4"
-    >
-      <motion.div style={{ y: y }} className="w-full flex flex-col gap-4">
-        <Image alt="image" src={"/2.jpg"} width={2268} height={4032} />
-        <Image alt="image" src={"/5.jpg"} width={2268} height={4032} />
-        <Image alt="image" src={"/8.jpg"} width={2268} height={4032} />
+    <div className="w-full h-full overflow-hidden">
+      <motion.div ref={ref} className="w-full h-full relative flex gap-4 px-4">
+        <motion.div style={{ y: y1 }}>
+          <RepeatedImages images={[images[0], images[3], images[6]]} />
+        </motion.div>
+        <motion.div style={{ y: y2 }}>
+          <RepeatedImages images={[images[4], images[7], images[1]]} />
+        </motion.div>
+        <motion.div style={{ y: y3 }}>
+          <RepeatedImages images={[images[5], images[2], images[8]]} />
+        </motion.div>
+        <motion.div style={{ y: y4 }}>
+          <RepeatedImages images={[images[7], images[3], images[8]]} />
+        </motion.div>
       </motion.div>
-      <motion.div style={{ y: y2 }} className="w-full flex flex-col gap-4">
-        <Image alt="image" src={"/6.jpg"} width={2268} height={4032} />
-        <Image alt="image" src={"/9.jpg"} width={2268} height={4032} />
-        <Image alt="image" src={"/3.jpg"} width={2268} height={4032} />
-      </motion.div>
-      <motion.div style={{ y: y3 }} className="w-full flex flex-col gap-4">
-        <Image alt="image" src={"/7.jpg"} width={2268} height={4032} />
-        <Image alt="image" src={"/4.jpg"} width={2268} height={4032} />
-        <Image alt="image" src={"/10.jpg"} width={2268} height={4032} />
-      </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
