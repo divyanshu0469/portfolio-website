@@ -4,27 +4,72 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
-const accordionItems = [
-  {
-    title: "Tutor booking platform",
-    time: "June 2025",
-    link: undefined,
-    content:
-      "Created a UI flow for a client which required basic auth and a flow to book tutor and have a 1-1 session",
-  },
+const jumbayaItems = [
   {
     title: "AI first Conversion rate optimization platform",
-    time: "May 2025",
-    link: "/link",
+    type: "Development",
+    time: "2025",
+    link: "https://medium.com/@divyyanshu/how-i-reduced-ai-workflow-time-from-15-minutes-to-5-minutes-using-langgraph-dynamic-n-sends-abed1dda84ae",
     content:
-      "Worked with a lean team in building a platform which can be used to generate campaigns for CRO. Using AI generated code for getting variants",
+      "Worked with a lean team in building a platform which can be used to generate campaigns for CRO. Using AI generated code for getting variants. For this I also optimized the AI workflow by orchestrating a new approach - parallelisation of stateless nodes (Resulting in a reduced time from 15 mins to 3-5mins)",
   },
   {
     title: "AI powered Social media content calendar",
-    time: "Apr 2025",
-    link: "/link2",
+    type: "Development",
+    time: "2025",
+    link: "https://medium.com/@divyyadav31/building-an-ai-powered-social-media-marketing-calendar-7b6b7be4491a",
     content:
-      "Created a class using selenium based automation for scraping brand data and persona creation with text and image generation",
+      "Created a class using selenium based automation for scraping brand data and persona creation with text and image generation. Over a glance this was a project which required me to use AI for understanding the brand's tone and type of content posted which was analysed and later used to generate competitors in similar industry and generating popular relevant hashtags. All this information is later used for generation of caption and images (configurable amount)",
+  },
+  {
+    title: "Jumbaya Schools",
+    type: "Development",
+    time: "2024",
+    content:
+      "Worked on a platform pre-pivot. For this, I implemented admin panel and CRUD annotaions(image, text and voice notes) on responsive canvas. These are some of the features I took ownership, aside from this I also worked on fixing prod bugs and shipping minor features.",
+  },
+];
+
+const personalItems = [
+  {
+    title: "React Meet",
+    type: "Development, Design",
+    time: "2025",
+    link: "https://use-react-meet.vercel.app/home",
+    content:
+      "Published a component library containing Reusable Meeting UI and commonly used methods for speeding up development",
+  },
+  {
+    title: "Himani Yadav's Portfolio",
+    type: "Development, Design",
+    time: "2025",
+    link: "https://himani-yadav.vercel.app/home",
+    content:
+      "Developed a minimal clean portfolio with CRUD operations for the owner, connected with CMS. Bringing focus to the lively images",
+  },
+  {
+    title: "TutorTrack",
+    type: "Development, Design",
+    time: "2025",
+    link: undefined,
+    content:
+      "Provided my frontend expertise to a client for bootstraping a tutor booking platform which can connect verified tutors to students. I developed flows for auth, requesting a tutor session and setting up 1 on 1 session.",
+  },
+  {
+    title: "ThorDashboard - Shopify alternative",
+    type: "Development",
+    time: "2025",
+    link: undefined,
+    content:
+      "Worked with a client providing assistance in maintaining the platform, fixing frontend bugs and adding new reusable components and features",
+  },
+  {
+    title: "Rent-logger",
+    type: "Development, Design",
+    time: "2024",
+    link: "https://rent-logger.vercel.app/login",
+    content:
+      "This is was a personal project, realised that traditional rent diary was too out dated so developed this for internal use (does exactly as the name suggests)",
   },
 ];
 
@@ -68,6 +113,7 @@ const CustomAccordion = ({
     title: string;
     time: string;
     link?: string;
+    type?: string;
     content: string;
   }[];
 }) => {
@@ -77,9 +123,10 @@ const CustomAccordion = ({
       <MaskDiv
         handleClick={() => setOpen((v) => (v === index ? undefined : index))}
         heading={
-          <div className="z-2 flex flex-1 justify-between cursor-pointer select-none">
-            <p>{i.title}</p>
-            <p className="max-md:hidden">{i.time}</p>
+          <div className="z-2 flex flex-1 justify-between items-center cursor-pointer select-none">
+            <p className="w-1/2 max-md:w-full">{i.title}</p>
+            <p className="max-md:hidden text-lg">{i.type}</p>
+            <p className="max-md:hidden text-lg">{i.time}</p>
           </div>
         }
         className={`border-light-cream ${
@@ -102,12 +149,20 @@ const CustomAccordion = ({
 
 export const Work = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center p-10 text-2xl">
+    <div className="w-full h-full flex flex-col items-center p-10 text-2xl gap-4">
       <p className="font-lt uppercase text-center text-3xl">
         Excited to showcase my past work & experience
       </p>
-      <p className="text-xl">{"Jumbaya (Jun 24 - Jun 25)"}</p>
-      <CustomAccordion items={accordionItems} />
+      <div className="w-full flex flex-col items-center">
+        <p className="text-xl text-center p-4">
+          {"Full Stack Developer @Jumbaya (2024 - 2025)"}
+        </p>
+        <CustomAccordion items={jumbayaItems} />
+        <p className="text-xl text-center p-4">
+          {"Personal (Jun 24 - Jun 25)"}
+        </p>
+        <CustomAccordion items={personalItems} />
+      </div>
     </div>
   );
 };

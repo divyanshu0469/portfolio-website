@@ -13,7 +13,7 @@ export default function About() {
       <div className="bg-light-cream text-light-black h-screen text-8xl font-lt">
         <ImageParallax />
       </div>
-      <div className="bg-light-black text-light-cream h-screen">
+      <div className="bg-light-black text-light-cream min-h-screen">
         <Work />
       </div>
     </Stairs>
