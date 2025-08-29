@@ -48,8 +48,8 @@ export const MaskDiv = ({
       <motion.div
         ref={divRef}
         animate={{
-          paddingLeft: hover.enter?.x && !isMobile ? "0.5rem" : 0,
-          paddingRight: hover.enter?.x && !isMobile ? "0.5rem" : 0,
+          paddingLeft: hover.enter?.x && !isMobile ? "1rem" : 0,
+          paddingRight: hover.enter?.x && !isMobile ? "1rem" : 0,
         }}
         onMouseEnter={(e) =>
           setHover({ enter: { x: e.clientX, y: e.clientY } })
