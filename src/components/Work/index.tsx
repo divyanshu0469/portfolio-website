@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MaskDiv } from "../MaskDiv";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
 const accordionItems = [
   {
@@ -27,6 +28,39 @@ const accordionItems = [
   },
 ];
 
+const CustomLink = ({ url }: { url: string }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <>
+      <Link
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        href={url}
+        className="text-lg relative whitespace-nowrap"
+      >
+        <motion.div
+          animate={{
+            color: isHovered ? "var(--light-orange)" : "var(--light-cream)",
+          }}
+          className="flex items-center"
+        >
+          Check out <ArrowUpRightIcon />
+        </motion.div>
+        <div className="absolute flex justify-between left-1/2 -translate-x-1/2 bottom-0 w-full h-0.5">
+          <motion.div
+            animate={{
+              backgroundColor: isHovered
+                ? "var(--light-orange)"
+                : "var(--light-cream)",
+            }}
+            className="w-full"
+          />
+        </div>
+      </Link>
+    </>
+  );
+};
+
 const CustomAccordion = ({
   items,
 }: {
@@ -43,29 +77,24 @@ const CustomAccordion = ({
       <MaskDiv
         handleClick={() => setOpen((v) => (v === index ? undefined : index))}
         heading={
-          <div className="z-2 flex flex-1 justify-between cursor-pointer">
+          <div className="z-2 flex flex-1 justify-between cursor-pointer select-none">
             <p>{i.title}</p>
-            <p>{i.time}</p>
+            <p className="max-md:hidden">{i.time}</p>
           </div>
         }
         className={`border-light-cream ${
-          index === 0 ? "border-y" : "border-b"
+          index === items.length - 1 ? "border-y" : "border-t"
         }`}
       />
       <motion.div
         animate={{ height: open === index ? "fit-content" : 0 }}
         transition={{ duration: 0.3 }}
-        className="w-full overflow-hidden relative text-xl px-4 gap-2 flex justify-between items-center"
+        className="w-full overflow-hidden relative text-xl"
       >
-        <div className="w-4/5">{i.content}</div>
-        {i.link && (
-          <Link
-            href={i.link}
-            className="text-lg h-6 whitespace-nowrap px-2 outline outline-dark-orange rounded-sm hover:bg-light-orange flex items-center"
-          >
-            Check out
-          </Link>
-        )}
+        <div className="w-full h-fit px-4 flex justify-between items-center max-md:flex-col py-2">
+          <div className="w-4/5 max-md:w-full">{i.content}</div>
+          {i.link ? <CustomLink url={i.link} /> : null}
+        </div>
       </motion.div>
     </div>
   ));
@@ -73,11 +102,11 @@ const CustomAccordion = ({
 
 export const Work = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center p-10 text-3xl">
-      <p className="font-lt uppercase">
+    <div className="w-full h-full flex flex-col items-center p-10 text-2xl">
+      <p className="font-lt uppercase text-center text-3xl">
         Excited to showcase my past work & experience
       </p>
-      <p>{"Jumbaya (Jun 24 - Jun 25)"}</p>
+      <p className="text-xl">{"Jumbaya (Jun 24 - Jun 25)"}</p>
       <CustomAccordion items={accordionItems} />
     </div>
   );

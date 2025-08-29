@@ -11,6 +11,7 @@ export default function Contact() {
     <Stairs>
       <div className="w-full h-screen whitespace-nowrap  flex flex-col justify-center items-center pt-13 font-redhawk font-extrabold">
         <MaskDiv
+          href="https://github.com/divyanshu0469"
           heading={<h1 style={{ fontSize }}>GITHUB</h1>}
           marqueeHeading={
             <div
@@ -26,13 +27,14 @@ export default function Contact() {
           className="border-y-2 border-black"
         />
         <MaskDiv
+          href="https://www.linkedin.com/in/divyyanshu31/"
           heading={<h1 style={{ fontSize }}>LINKEDIN</h1>}
           marqueeHeading={
             <div
               style={{ fontSize }}
               className=" flex justify-center items-center gap-5 px-5 bg-light-orange text-light-cream"
             >
-              <p>reach out</p>
+              <p>Lets Connect</p>
               <LinkedinLogoIcon weight="bold" />
             </div>
           }
@@ -42,6 +44,7 @@ export default function Contact() {
         />
 
         <MaskDiv
+          href="https://x.com/divyyadav31"
           heading={<h1 style={{ fontSize }}>X / TWITTER</h1>}
           marqueeHeading={
             <div
