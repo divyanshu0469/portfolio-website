@@ -10,7 +10,7 @@ export default function About() {
       <div className="font-lt leading-[1] h-screen gap-3 flex flex-col justify-center items-center">
         <Heading />
       </div>
-      <div className="bg-light-cream text-light-black h-screen text-8xl font-lt">
+      <div className="bg-light-cream text-light-black h-screen max-md:h-100 text-8xl font-lt">
         <ImageParallax />
       </div>
       <div className="bg-light-black text-light-cream min-h-screen">
