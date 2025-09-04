@@ -158,9 +158,7 @@ export const Work = () => {
           {"Full Stack Developer @Jumbaya (2024 - 2025)"}
         </p>
         <CustomAccordion items={jumbayaItems} />
-        <p className="text-xl text-center p-4">
-          {"Personal (Jun 24 - Jun 25)"}
-        </p>
+        <p className="text-xl text-center p-4">{"Personal"}</p>
         <CustomAccordion items={personalItems} />
       </div>
     </div>
