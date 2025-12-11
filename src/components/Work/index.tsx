@@ -4,6 +4,24 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
+const doxperItems = [
+  {
+    title: "Doxper Blu 2.0",
+    type: "Development, Design",
+    time: "2025",
+    content:
+      "Worked at a product based startup with a lean team in building a app that can streamline hospital management, My work here was heavy on frontend and requirement based backend. I have shipped pixel perfect responsive components for our new app, developed multiples screens and flows like template CRUD, appointment registration, order creation and history, role based flows for receptionist and doctor. I have also utilised my past research on different design choices and animations to bring flows to life.",
+  },
+  {
+    title: "Webflow based production website management",
+    type: "Development, Design",
+    time: "2025",
+    link: "https://uncover.co.in/",
+    content:
+      "I have helped manage and create multiple templates and components for webflow website, handled CMS collections. Deployed responsive and animated pages while working with the rest of the team in refining the design",
+  },
+];
+
 const jumbayaItems = [
   {
     title: "AI first Conversion rate optimization platform",
@@ -154,6 +172,10 @@ export const Work = () => {
         Excited to showcase my past work & experience
       </p>
       <div className="w-full flex flex-col items-center">
+        <p className="text-xl text-center p-4">
+          {"Associate Software Developer @Doxper (2025 - Present)"}
+        </p>
+        <CustomAccordion items={doxperItems} />
         <p className="text-xl text-center p-4">
           {"Full Stack Developer @Jumbaya (2024 - 2025)"}
         </p>
