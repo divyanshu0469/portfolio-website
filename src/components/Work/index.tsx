@@ -141,10 +141,20 @@ const CustomAccordion = ({
       <MaskDiv
         handleClick={() => setOpen((v) => (v === index ? undefined : index))}
         heading={
-          <div className="z-2 flex flex-1 justify-between items-center cursor-pointer select-none">
-            <p className="w-1/2 max-md:w-full">{i.title}</p>
-            <p className="max-md:hidden text-lg">{i.type}</p>
-            <p className="max-md:hidden text-lg">{i.time}</p>
+          <div className="z-2 flex overflow-hidden flex-1 justify-between items-center cursor-pointer select-none">
+            <motion.p 
+      initial={{  y: "100%" }}
+      whileInView={{  y: "0%" }}
+      transition={{ duration: 0.3,type: "spring",
+            damping: 13, }} className="w-1/2 max-md:w-full">{i.title}</motion.p>
+            <motion.p initial={{  y: "100%" }}
+      whileInView={{  y: "0%" }}
+      transition={{ duration: 0.3,type: "spring",
+            damping: 13, }} className="max-md:hidden text-lg">{i.type}</motion.p>
+            <motion.p initial={{  y: "100%" }}
+      whileInView={{  y: "0%" }}
+      transition={{ duration: 0.3,type: "spring",
+            damping: 13, }} className="max-md:hidden text-lg">{i.time}</motion.p>
           </div>
         }
         className={`border-light-cream ${
