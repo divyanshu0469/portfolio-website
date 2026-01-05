@@ -92,6 +92,10 @@ export const MaskDiv = ({
   ) : (
     <motion.div
       ref={divRef}
+        initial={{width: 0}}
+        whileInView={{width: "100%"}}
+        viewport={{once: true}}
+        transition={{duration: 1, damping: 13}}
       animate={{
         paddingLeft: hover.enter?.x && !isMobile ? "0.5rem" : 0,
         paddingRight: hover.enter?.x && !isMobile ? "0.5rem" : 0,
@@ -99,7 +103,7 @@ export const MaskDiv = ({
       onMouseEnter={(e) => setHover({ enter: { x: e.clientX, y: e.clientY } })}
       onMouseLeave={(e) => setHover({ exit: { x: e.clientX, y: e.clientY } })}
       onClick={handleClick}
-      className={`relative cursor-default w-full flex justify-center overflow-hidden ${className}`}
+      className={`relative cursor-default flex justify-center overflow-hidden ${className}`}
     >
       {heading}
       <motion.div

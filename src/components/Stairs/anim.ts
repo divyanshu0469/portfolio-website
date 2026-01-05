@@ -24,6 +24,9 @@ export const expand = {
 export const opacity = {
   initial: {
     opacity: 0.5,
+    transition: {
+      duration: 3
+    },
   },
   enter: {
     opacity: 0,
