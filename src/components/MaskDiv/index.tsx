@@ -92,13 +92,13 @@ export const MaskDiv = ({
   ) : (
     <motion.div
       ref={divRef}
-        initial={{width: 0}}
-        whileInView={{width: "100%"}}
-        viewport={{once: true}}
-        transition={{duration: 1, damping: 13}}
+      initial={{ width: 0 }}
+      whileInView={{ width: "100%" }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3, damping: 13 }}
       animate={{
-        paddingLeft: hover.enter?.x && !isMobile ? "0.5rem" : 0,
-        paddingRight: hover.enter?.x && !isMobile ? "0.5rem" : 0,
+        paddingLeft: hover.enter?.x && !isMobile ? "0.75rem" : 0,
+        paddingRight: hover.enter?.x && !isMobile ? "0.75rem" : 0,
       }}
       onMouseEnter={(e) => setHover({ enter: { x: e.clientX, y: e.clientY } })}
       onMouseLeave={(e) => setHover({ exit: { x: e.clientX, y: e.clientY } })}
