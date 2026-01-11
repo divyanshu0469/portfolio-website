@@ -42,11 +42,24 @@ const NavItem = ({
       onMouseEnter={(e) => setHover({ enter: { x: e.clientX, y: e.clientY } })}
       onMouseLeave={(e) => setHover({ exit: { x: e.clientX, y: e.clientY } })}
       href={item.href}
-      className={`relative flex flex-col justify-center  h-fit w-fit ${
+      className={`relative overflow-hidden flex flex-col justify-center  h-fit w-fit ${
         directionEnd ? "items-end" : ""
       }`}
     >
       <motion.p
+      initial={
+        {
+          y: "100%",
+        }
+      }
+      animate={{
+        y:"0%",
+      }}
+      transition={{
+            delay: 0.3,
+            duration: 0.7,
+            type: "spring",
+            damping: 13,}}
         className={`relative px-1 ${isActive ? "text-light-orange" : ""}`}
       >
         {item.title}
@@ -71,7 +84,22 @@ const Nav = () => {
       style={{ fontSize: fontSize }}
       className="z-1 fixed uppercase px-4 pt-4 flex w-full justify-between text-light-cream font-bold mix-blend-difference"
     >
-      <p>Divyanshu Yadav</p>
+      <div className="overflow-hidden">
+      <motion.p
+      initial={
+        {
+          y: "100%",
+        }
+      }
+      animate={{
+        y:"0%",
+      }}
+      transition={{
+            delay: 0.3,
+            duration: 0.7,
+            type: "spring",
+            damping: 13,}}>Divyanshu Yadav</motion.p>
+      </div>
       <div className="flex relative">
         {items.map((item, index) => (
           <NavItem key={index} item={item} isActive={pathname === item.href} />

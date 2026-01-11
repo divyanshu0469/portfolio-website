@@ -35,15 +35,15 @@ const RepeatedImages = ({
 };
 
 const images = [
-  "/2.jpg",
-  "/3.jpg",
-  "/4.jpg",
-  "/5.jpg",
-  "/6.jpg",
-  "/7.jpg",
-  "/8.jpg",
-  "/9.jpg",
-  "/10.jpg",
+  "/1.webp",
+  "/2.webp",
+  "/3.webp",
+  "/4.webp",
+  "/5.webp",
+  "/6.webp",
+  "/7.webp",
+  "/8.webp",
+  "/9.webp",
 ];
 
 export const ImageParallax = () => {
