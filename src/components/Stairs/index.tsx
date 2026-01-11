@@ -1,66 +1,9 @@
-import { ReactNode, useEffect, useState } from "react";
-import { opacity, expand } from "./anim";
+import { ReactNode } from "react";
+import { expand } from "./anim";
 import { motion, AnimatePresence } from "motion/react";
 
 export const Stairs = ({ children }: { children: ReactNode }) => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const preloadImages = async () => {
-      // Get all images in the document
-      const images = Array.from(document.querySelectorAll("img"));
-      
-      // Also get background images from CSS
-      const bgImages = Array.from(document.querySelectorAll("*"))
-        .map((el) => {
-          const style = window.getComputedStyle(el);
-          const bgImage = style.backgroundImage;
-          if (bgImage && bgImage !== "none") {
-            const match = bgImage.match(/url\(["']?(.+?)["']?\)/);
-            return match ? match[1] : null;
-          }
-          return null;
-        })
-        .filter(Boolean) as string[];
-
-      const imagePromises = [
-        // Preload <img> elements
-        ...images.map(
-          (img) =>
-            new Promise<void>((resolve) => {
-              if (img.complete) {
-                resolve();
-              } else {
-                img.onload = () => resolve();
-                img.onerror = () => resolve();
-              }
-            })
-        ),
-        // Preload background images
-        ...bgImages.map(
-          (src) =>
-            new Promise<void>((resolve) => {
-              const img = new Image();
-              img.src = src;
-              img.onload = () => resolve();
-              img.onerror = () => resolve();
-            })
-        ),
-      ];
-
-      // Wait for all images or timeout after 5 seconds
-      await Promise.race([
-        Promise.all(imagePromises),
-        new Promise((resolve) => setTimeout(resolve, 5000)),
-      ]);
-
-      setIsLoading(false);
-    };
-
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(preloadImages, 100);
-    return () => clearTimeout(timer);
-  }, []);
+  const isLoading = false;
 
   const anim = (
     variants: { initial: any; enter: any; exit: any },
