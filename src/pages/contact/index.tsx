@@ -2,6 +2,7 @@ import { Stairs } from "@/components/Stairs";
 import { useMediaQuery } from "react-responsive";
 import { GithubLogoIcon, LinkedinLogoIcon } from "@phosphor-icons/react";
 import { MaskDiv } from "@/components/MaskDiv";
+import Head from "next/head";
 
 export default function Contact() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -9,6 +10,13 @@ export default function Contact() {
   const fontSize = isMobile ? (heightOver ? "5vh" : "8vw") : "4vw";
   return (
     <Stairs>
+      <Head>
+        <title>Contact | Divyanshu Yadav</title>
+        <meta
+          name="description"
+          content="Get in touch with Divyanshu Yadav — connect via GitHub, LinkedIn, or Twitter."
+        />
+      </Head>
       <div className="w-full h-screen whitespace-nowrap  flex flex-col justify-center items-center pt-13 font-redhawk font-extrabold">
         <MaskDiv
           href="https://github.com/divyanshu0469"

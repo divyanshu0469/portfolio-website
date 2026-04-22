@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://divyanshu-yadav.vercel.app/sitemap.xml
