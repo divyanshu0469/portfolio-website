@@ -75,6 +75,17 @@ export default function App({ Component, router, pageProps }: AppProps) {
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Divyanshu Yadav",
+              url: BASE_URL,
+            }),
+          }}
+        />
       </Head>
       <div className="page">
         <AnimatePresence mode="wait">
