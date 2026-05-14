@@ -6,6 +6,21 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react";
 
 const doxperItems = [
   {
+    title: "Biz App — Healthcare Lead Management Platform",
+    type: "Development",
+    time: "2025-2026",
+    link: "https://crm.doxper.com/",
+    content:
+      "Sole architect and engineer of a production-grade multi-tenant CRM built as a decoupled microservice, replacing a legacy module used across multiple hospitals. Implemented shared-database pattern, custom ORM routing, read-replica support, and 5-tier role-based authorization. Engineered a configurable workflow engine with declarative status graphs, JSON-schema dynamic forms, and React Flow visualisation. Built an intelligent lead auto-assignment engine with multi-dimensional priority scoring, Redis-backed presence detection, and real-time WebSocket fan-out. Shipped a pluggable telephony abstraction (Exotel-first) with stateful auto-dialer, SQS-to-Lambda pipeline delivering Deepgram Nova-3 transcription and Gemini-powered call summarisation.",
+  },
+  {
+    title: "AI Prescription Pipeline & Backend Systems",
+    type: "Development",
+    time: "2025-2026",
+    content:
+      "Engineered a Gemini AI prescription fulfilment pipeline -- vision model for handwritten prescriptions and text-based for digital -- auto-detecting 16 medical categories with zero hallucination in under 7 seconds, currently processing 50k+ prescriptions/day in production. Also handled diverse backend responsibilities including billing report generation, prompt optimisation, and Django admin UI development.",
+  },
+  {
     title: "Doxper Blu 2.0",
     type: "Development, Design",
     time: "2025",
@@ -19,6 +34,47 @@ const doxperItems = [
     link: "https://uncover.co.in/",
     content:
       "I have helped manage and create multiple templates and components for webflow website, handled CMS collections. Deployed responsive and animated pages while working with the rest of the team in refining the design",
+  },
+];
+
+const upworkItems = [
+  {
+    title: "Brilo AI — Voice Agent Platform",
+    type: "Development",
+    time: "2026",
+    link: "http://brilo.ai/",
+    content:
+      "Contracted by an SF-based AI phone and voice call agent platform for businesses. Contributed to core frontend architecture and UI components for the voice AI agent system. Supported customer onboarding and collaborated closely with the product team on development decisions.",
+  },
+  {
+    title: "TutorTrack — Edtech MVP",
+    type: "Development, Design",
+    time: "2025",
+    content:
+      "Provided frontend expertise to a client for bootstrapping a tutor booking platform connecting verified tutors to students. Developed flows for auth, requesting a tutor session, and setting up 1-on-1 sessions.",
+  },
+  {
+    title: "Himani Yadav's Portfolio",
+    type: "Development, Design",
+    time: "2025",
+    link: "https://himani-yadav.vercel.app/home",
+    content:
+      "Developed a minimal clean portfolio for a PhD researcher in Tectonic Geomorphology (University of Toronto) with CRUD operations for the owner, connected with CMS. Brought focus to lively images with custom interactions and pixel-perfect responsive design.",
+  },
+  {
+    title: "Adam Czajkowski's Portfolio",
+    type: "Development, Design",
+    time: "2025",
+    link: "https://adamcz.art/",
+    content:
+      "Designed and developed a portfolio website for a designer, delivering a pixel-perfect responsive design with custom interactions that reflect the client's creative aesthetic.",
+  },
+  {
+    title: "ThorDashboard - Shopify alternative",
+    type: "Development",
+    time: "2025",
+    content:
+      "Worked with a client providing assistance in maintaining the platform, fixing frontend bugs and adding new reusable components and features.",
   },
 ];
 
@@ -57,30 +113,30 @@ const personalItems = [
     content:
       "Published a component library containing Reusable Meeting UI and commonly used methods for speeding up development",
   },
-  {
-    title: "Himani Yadav's Portfolio",
-    type: "Development, Design",
-    time: "2025",
-    link: "https://himani-yadav.vercel.app/home",
-    content:
-      "Developed a minimal clean portfolio with CRUD operations for the owner, connected with CMS. Bringing focus to the lively images",
-  },
-  {
-    title: "TutorTrack",
-    type: "Development, Design",
-    time: "2025",
-    link: undefined,
-    content:
-      "Provided my frontend expertise to a client for bootstraping a tutor booking platform which can connect verified tutors to students. I developed flows for auth, requesting a tutor session and setting up 1 on 1 session.",
-  },
-  {
-    title: "ThorDashboard - Shopify alternative",
-    type: "Development",
-    time: "2025",
-    link: undefined,
-    content:
-      "Worked with a client providing assistance in maintaining the platform, fixing frontend bugs and adding new reusable components and features",
-  },
+  // {
+  //   title: "Himani Yadav's Portfolio",
+  //   type: "Development, Design",
+  //   time: "2025",
+  //   link: "https://himani-yadav.vercel.app/home",
+  //   content:
+  //     "Developed a minimal clean portfolio with CRUD operations for the owner, connected with CMS. Bringing focus to the lively images",
+  // },
+  // {
+  //   title: "TutorTrack",
+  //   type: "Development, Design",
+  //   time: "2025",
+  //   link: undefined,
+  //   content:
+  //     "Provided my frontend expertise to a client for bootstraping a tutor booking platform which can connect verified tutors to students. I developed flows for auth, requesting a tutor session and setting up 1 on 1 session.",
+  // },
+  // {
+  //   title: "ThorDashboard - Shopify alternative",
+  //   type: "Development",
+  //   time: "2025",
+  //   link: undefined,
+  //   content:
+  //     "Worked with a client providing assistance in maintaining the platform, fixing frontend bugs and adding new reusable components and features",
+  // },
   {
     title: "Rent-logger",
     type: "Development, Design",
@@ -347,8 +403,8 @@ const CustomAccordion = ({
                 disableBottomBorder
                   ? "border-t"
                   : index === items.length - 1
-                  ? "border-y"
-                  : "border-t"
+                    ? "border-y"
+                    : "border-t"
               }`}
             />
             <motion.div
@@ -386,6 +442,16 @@ export const Work = () => {
           open={open}
           setOpen={setOpen}
           groupKey="doxper"
+        />
+        <CustomAccordion
+          items={upworkItems}
+          popoverTitle="Upwork"
+          popoverDuration="(2025 - Present)"
+          popoverContent="Freelancer"
+          disableBottomBorder
+          open={open}
+          setOpen={setOpen}
+          groupKey="upwork"
         />
         <CustomAccordion
           items={jumbayaItems}
